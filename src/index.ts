@@ -4,6 +4,7 @@ exports from those modules in the current module where this code is located. Thi
 access the exported functions, variables, or classes from those modules directly in the current
 module without having to import them individually. */
 
-export * from "./functions/animelist";
-export * from "./functions/akaneko";
-export * from "./functions/console";
+export * from "./functions/nekos.life";
+export * from './functions/animelist';
+export * from './functions/akaneko';
+export * from './functions/console';

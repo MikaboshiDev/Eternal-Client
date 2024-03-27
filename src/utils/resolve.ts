@@ -1,9 +1,7 @@
-import fetch from 'node-fetch';
+import axios from "axios"
 
 export async function resolve(params: string): Promise<string> {
-  return fetch(`https://akaneko.cuteasfubuki.xyz/api/${params}`)
-    .then((res) => res.json())
-    .then((json: any) => {
-      return json.url;
-    });
+  const response = await axios.get(`https://akaneko.cuteasfubuki.xyz/api/${params}`);
+  if (response.status !== 200) throw new Error("Failed to fetch image");
+  return response.data.url;
 }

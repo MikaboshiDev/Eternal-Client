@@ -1,7 +1,7 @@
 {
-  "name": "eternal-client",
+  "name": "eternal-support",
   "version": "0.0.1",
-  "description": "",
+  "description": "Support library for Eternal Client projects, has anime functions, control, logging and more utilities",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
   "scripts": {

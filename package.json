@@ -25,7 +25,8 @@
     "api"
   ],
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "index"
   ],
   "author": "Eternal IA",
   "license": "ISC",

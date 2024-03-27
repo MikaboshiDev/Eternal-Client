@@ -1,24 +1,22 @@
 import { resolve } from '../utils/resolve';
 
-function neko(): Promise<string> {
-  return resolve('neko');
-}
-
-function lewdNeko(): Promise<string> {
-  return resolve('lewdneko');
-}
-
-function foxgirl(): Promise<string> {
-  return resolve('sfwfoxes');
-}
-
-function wallpapers(): Promise<string> {
-  return resolve('wallpapers');
-}
-
-function mobileWallpapers(): Promise<string> {
-  return resolve('mobileWallpapers');
-}
+const sfw = {
+  neko: function (): Promise<string> {
+    return resolve('neko');
+  },
+  wallpapers: function (): Promise<string> {
+    return resolve('wallpapers');
+  },
+  mobileWallpapers: function (): Promise<string> {
+    return resolve('mobileWallpapers');
+  },
+  foxgirl: function (): Promise<string> {
+    return resolve('sfwfoxes');
+  },
+  lewdNeko: function (): Promise<string> {
+    return resolve('lewdneko');
+  },
+};
 
 const nsfw = {
   ass: function (): Promise<string> {
@@ -122,4 +120,4 @@ const nsfw = {
   },
 };
 
-export { nsfw, neko, lewdNeko, foxgirl, wallpapers, mobileWallpapers }
+export { nsfw, sfw };

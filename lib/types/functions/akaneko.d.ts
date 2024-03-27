@@ -1,8 +1,10 @@
-declare function neko(): Promise<string>;
-declare function lewdNeko(): Promise<string>;
-declare function foxgirl(): Promise<string>;
-declare function wallpapers(): Promise<string>;
-declare function mobileWallpapers(): Promise<string>;
+declare const sfw: {
+    neko: () => Promise<string>;
+    wallpapers: () => Promise<string>;
+    mobileWallpapers: () => Promise<string>;
+    foxgirl: () => Promise<string>;
+    lewdNeko: () => Promise<string>;
+};
 declare const nsfw: {
     ass: () => Promise<string>;
     bdsm: () => Promise<string>;
@@ -38,4 +40,4 @@ declare const nsfw: {
     succubus: () => Promise<string>;
     yaoi: () => Promise<string>;
 };
-export { nsfw, neko, lewdNeko, foxgirl, wallpapers, mobileWallpapers };
+export { nsfw, sfw };

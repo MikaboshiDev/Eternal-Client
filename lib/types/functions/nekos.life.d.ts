@@ -1,4 +1,1 @@
-export declare class NekoClient {
-    [key: string]: any;
-    constructor();
-}
+export declare function getContent(url: any): Promise<unknown>;

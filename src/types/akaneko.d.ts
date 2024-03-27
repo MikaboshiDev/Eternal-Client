@@ -1,42 +1,40 @@
 declare module 'akaneko' {
-  /**
-   * Returns Safe for Work Neko Images!
-   * @returns image uri
-   */
-  export function neko(): Promise<String>;
+  namespace sfw {
+    /**
+     * @returns image uri
+     */
+    export function neko(): Promise<String>;
 
-  /**
-   * Returns you lewd ... and dirty ... Neko Images !
-   * @returns image uri
-   */
-  export function lewdNeko(): Promise<String>;
+    /**
+     * @returns image uri
+     */
+    export function lewdNeko(): Promise<String>;
 
-  /**
-   * Images provided by @LamkasDev !~
-   * Returns Safe for Work Foxgirl Images! Thanks @LamkasDev!
-   * @returns image uri
-   */
-  export function foxgirl(): Promise<String>;
+    /**
+     * Images provided by @LamkasDev !~
+     * @returns image uri
+     */
+    export function foxgirl(): Promise<String>;
 
-  /**
-   * Returns Sends a bomb of random images of N value!
-   * Contributed by @HanBao#8443 !! Thank you so much !
-   * @param total amount of lewds! :3
-   * @returns image uri
-   */
-  export function lewdBomb(total: number): Promise<String>;
+    /**
+     * Returns Sends a bomb of random images of N value!
+     * @param total amount of lewds! :3
+     * @returns image uri
+     */
+    export function lewdBomb(total: number): Promise<String>;
 
-  /**
-   * Returns you SFW Anime Wallpapers for Desktops !
-   * @returns image uri
-   */
-  export function wallpapers(): Promise<String>;
+    /**
+     * Returns you SFW Anime Wallpapers for Desktops !
+     * @returns image uri
+     */
+    export function wallpapers(): Promise<String>;
 
-  /**
-   * Returns SFW Anime Wallpapers for Mobile Users !
-   * @returns image uri
-   */
-  export function mobileWallpapers(): Promise<String>;
+    /**
+     * Returns SFW Anime Wallpapers for Mobile Users !
+     * @returns image uri
+     */
+    export function mobileWallpapers(): Promise<String>;
+  }
 
   /**
    * These methods get NSFW images (lewds).

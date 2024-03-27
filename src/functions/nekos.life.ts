@@ -1,8 +1,6 @@
-import endpoints from '../config/endpoints.json';
-import { URL, URLSearchParams } from 'url';
 import { get } from 'https';
 
-function getContent(url: any) {
+export function getContent(url: any) {
   return new Promise((resolve, reject) => {
     get(url, (res) => {
       const { statusCode } = res;
@@ -27,19 +25,4 @@ function getContent(url: any) {
       reject(`Error: ${err.message}`);
     });
   });
-}
-
-export class NekoClient {
-    [key: string]: any;
-  constructor() {
-    let self = this;
-    let baseURL = 'https://nekos.life/api/v2';
-    Object.keys(endpoints).forEach(async (endpoint: any) => {
-      self[endpoint] = async function (queryParams = '') {
-        let url = new URL(`${baseURL}${(endpoints as any)[endpoint]}`);
-        queryParams !== '' ? (url.search = new URLSearchParams(queryParams).toString()) : '';
-        return await getContent(url.toString());
-      };
-    });
-  }
 }

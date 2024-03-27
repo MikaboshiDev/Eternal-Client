@@ -1,6 +1,6 @@
 {
   "name": "eternal-support",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Support library for Eternal Client projects, has anime functions, control, logging and more utilities",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
@@ -24,12 +24,15 @@
     "whatsapp",
     "api"
   ],
+  "files": [
+    "lib/**/*"
+  ],
   "author": "Eternal IA",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MikaboshiDev/Package/issues"
   },
-  "homepage": "https://github.com/MikaboshiDev/Package#readme",
+  "homepage": "https://docs.night-support.xyz",
   "devDependencies": {
     "ava": "^6.1.2",
     "chalk": "^4.0.0",

@@ -1,5 +1,5 @@
 import { Client, GatewayIntentBits, Options, Partials, WebhookClient } from 'discord.js';
-import { antiCrash } from '../src/index';
+import { antiCrash } from '../index';
 
 export class Discord extends Client {
   constructor() {

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export declare class ApiTools {
     client: any;
     url: string;

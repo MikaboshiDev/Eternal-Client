@@ -1,1 +1,1 @@
-export declare function setupModelMiddleware(model: unknown): void;
+export declare function setupModelMiddleware(model: any): void;

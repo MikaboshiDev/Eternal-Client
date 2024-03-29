@@ -1,7 +1,7 @@
-import { NekoClient } from "../src/index";
+import { NekoClient } from '../index';
 async function request() {
-   const neko = new NekoClient();
-   console.log(await neko.hug());
+  const neko = new NekoClient();
+  console.log(await neko.hug());
 }
 
 request();

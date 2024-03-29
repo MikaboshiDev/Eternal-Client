@@ -1,6 +1,6 @@
-import { sfw } from "../src/index";
+import { sfw } from '../index';
 async function request() {
-   console.log(await sfw.mobileWallpapers())
+  console.log(await sfw.mobileWallpapers());
 }
 
 request();

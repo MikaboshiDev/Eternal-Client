@@ -1,6 +1,6 @@
 {
   "name": "eternal-support",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Support library for Eternal Client projects, has anime functions, control, logging and more utilities",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
@@ -28,8 +28,7 @@
   ],
   "files": [
     "lib/**/*",
-    "config/**/*",
-    "test/**/*"
+    "config/**/*"
   ],
   "author": "Eternal IA",
   "license": "ISC",

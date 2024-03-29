@@ -1,1 +1,1 @@
-export declare function getContent(url: string): Promise<unknown>;
+export declare function getContent(url: any): Promise<unknown>;

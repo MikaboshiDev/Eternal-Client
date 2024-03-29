@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 declare const anime: {
     animeRandom: () => Promise<false | import("axios").AxiosResponse<any, any>>;
     animeSearch: (id: number) => Promise<false | import("axios").AxiosResponse<any, any>>;

@@ -1,7 +1,7 @@
-import { anime, manga } from "../src/index";
+import { anime, manga } from '../index';
 async function request() {
-   console.log(await anime.animeRandom());
-   console.log(await manga.mangaRandom());
+  console.log(await anime.animeRandom());
+  console.log(await manga.mangaRandom());
 }
 
 request();

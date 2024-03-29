@@ -1,4 +1,4 @@
-[![NPM](https://nodei.co/npm/eternal-support.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nekos.life/)
+[![NPM](https://nodei.co/npm/eternal-support.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/eternal-support/)
 
 # Eternal Support
 

@@ -5,11 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
   "scripts": {
-    "test": "",
     "build": "tsc",
-    "build:watch": "npm run build -- -w",
-    "test:watch": "ava --watch",
-    "coverage": "nyc ava",
     "prepare": "husky install",
     "release": "standard-version",
     "release:first": "npm run release -- --first-release"

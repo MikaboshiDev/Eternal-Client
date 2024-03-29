@@ -18,6 +18,7 @@
 export * from './functions/animelist';
 export * from './functions/akaneko';
 export * from './functions/console';
+export * from './tools/handlers';
 
 /* ----- Class Tools ----- */
 export { NekoClient } from './class/nekoClient';
@@ -25,3 +26,4 @@ export { ApiTools } from './class/apiTools';
 
 /* ----- Middlewares ----- */
 export { setupModelMiddleware } from './tools/mongo';
+export { antiCrash } from "./functions/anti.crash";

@@ -1,33 +1,42 @@
 declare class NekoClient {
+  /* ----- Section #4 ----- */
   tickle(): Promise<NekoClient.NekoRequestResults>;
   slap(): Promise<NekoClient.NekoRequestResults>;
   smug(): Promise<NekoClient.NekoRequestResults>;
   baka(): Promise<NekoClient.NekoRequestResults>;
   poke(): Promise<NekoClient.NekoRequestResults>;
-  pat(): Promise<NekoClient.NekoRequestResults>;
-  neko(): Promise<NekoClient.NekoRequestResults>;
+
+  /* ----- Section #6 ----- */
   nekoGif(): Promise<NekoClient.NekoRequestResults>;
-  meow(): Promise<NekoClient.NekoRequestResults>;
   lizard(): Promise<NekoClient.NekoRequestResults>;
+  neko(): Promise<NekoClient.NekoRequestResults>;
+  meow(): Promise<NekoClient.NekoRequestResults>;
   kiss(): Promise<NekoClient.NekoRequestResults>;
+  pat(): Promise<NekoClient.NekoRequestResults>;
   hug(): Promise<NekoClient.NekoRequestResults>;
+
+  /* ----- Section #7 ----- */
   foxGirl(): Promise<NekoClient.NekoRequestResults>;
-  feed(): Promise<NekoClient.NekoRequestResults>;
   cuddle(): Promise<NekoClient.NekoRequestResults>;
   woof(): Promise<NekoClient.NekoRequestResults>;
+  feed(): Promise<NekoClient.NekoRequestResults>;
   why(): Promise<NekoClient.NekoWhyResult>;
-  catText(): Promise<NekoClient.NekoCatResult>;
-  OwOify(opts: NekoClient.NekoQueryParams): Promise<NekoClient.NekoOwOResult>;
+
+  /* ----- Section #2 -----*/
   eightBall(opts: NekoClient.NekoQueryParams): Promise<NekoClient.NekoChatResults>;
-  fact(): Promise<NekoClient.NekoFactResult>;
+  OwOify(opts: NekoClient.NekoQueryParams): Promise<NekoClient.NekoOwOResult>;
   kemonomimi(): Promise<NekoClient.NekoRequestResults>;
   holo(): Promise<NekoClient.NekoRequestResults>;
+  catText(): Promise<NekoClient.NekoCatResult>;
+  fact(): Promise<NekoClient.NekoFactResult>;
+
+  /* ----- Section #1 -----*/
   spoiler(opts: NekoClient.NekoQueryParams): Promise<NekoClient.NekoOwOResult>;
+  wallpaper(): Promise<NekoClient.NekoRequestResults>;
   avatar(): Promise<NekoClient.NekoRequestResults>;
+  goose(): Promise<NekoClient.NekoRequestResults>;
   waifu(): Promise<NekoClient.NekoRequestResults>;
   gecg(): Promise<NekoClient.NekoRequestResults>;
-  goose(): Promise<NekoClient.NekoRequestResults>;
-  wallpaper(): Promise<NekoClient.NekoRequestResults>;
 }
 
 export = NekoClient;

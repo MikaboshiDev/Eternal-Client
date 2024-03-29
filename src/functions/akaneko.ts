@@ -1,4 +1,4 @@
-import { resolve } from '../utils/resolve';
+import { resolve } from '../tools/resolve';
 
 const sfw = {
   neko: function (): Promise<string> {

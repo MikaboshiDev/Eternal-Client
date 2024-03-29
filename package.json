@@ -1,6 +1,6 @@
 {
   "name": "eternal-support",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Support library for Eternal Client projects, has anime functions, control, logging and more utilities",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
@@ -22,27 +22,42 @@
     "discord",
     "api-rest",
     "whatsapp",
-    "api"
+    "api",
+    "anime",
+    "manga",
+    "nsfw",
+    "anti-crash",
+    "console",
+    "mongoose"
   ],
   "files": [
     "lib/**/*",
-    "index"
+    "config/**/*",
+    "test/**/*"
   ],
   "author": "Eternal IA",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MikaboshiDev/Package/issues"
   },
-  "homepage": "https://docs.night-support.xyz",
+  "homepage": "https://docs.night-support.xyz/paquetes/eternal-support",
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "ava": "^6.1.2",
     "chalk": "^4.0.0",
+    "eslint": "^8.57.0",
     "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.3"
   },
   "dependencies": {
     "axios": "^1.6.8",
+    "discord.js": "^14.14.1",
+    "express": "^4.19.2",
+    "glob": "^10.3.12",
     "node-fetch": "^3.3.2"
   }
 }

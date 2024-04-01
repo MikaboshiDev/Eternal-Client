@@ -1,6 +1,6 @@
 import { get } from 'https';
 
-export function getContent(url: any) {
+export function getContent(url: string) {
   return new Promise((resolve, reject) => {
     get(url, (res) => {
       const { statusCode } = res;
@@ -17,8 +17,10 @@ export function getContent(url: any) {
         try {
           const parsedData = JSON.parse(rawData);
           resolve(parsedData);
-        } catch (e: any) {
-          reject(`Error: ${e.message}`);
+        } catch (e) {
+          if (e instanceof Error) {
+            reject(`Error: ${e.message}`);
+          }
         }
       });
     }).on('error', (err) => {

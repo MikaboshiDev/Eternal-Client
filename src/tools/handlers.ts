@@ -51,6 +51,8 @@ export const handlers = {
           });
       }
     });
+
+    return router;
   },
   handlerWhatsapp: async function ({ rute, client, extension }: { rute: string; client: ClientType; extension: string }) {
     const commandsPath = path.join(__dirname, rute);

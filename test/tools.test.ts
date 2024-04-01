@@ -1,5 +1,10 @@
+import { Client } from 'discord.js';
 import { ApiTools } from '../index';
-const client = 'YOUR_CLIENT';
+
+const client = new Client({
+  intents: [],
+  partials: [],
+});
 
 function registerApp() {
   const res = new ApiTools('http://www.night-support.xyz/api/v1', client);

@@ -15,8 +15,8 @@
 */
 
 /* ----- Functions ----- */
-export * from './src/functions/akaneko';
 export * from './src/functions/animelist';
+export * from './src/functions/akaneko';
 export * from './src/functions/console';
 export * from './src/tools/handlers';
 

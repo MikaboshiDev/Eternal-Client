@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import chalk from 'chalk';
 
 type Labels =
@@ -66,16 +67,15 @@ export function logWithLabel(label: Labels, message: string) {
   const _getLogOrigin = () => {
     let filename: any;
 
-    let _pst = Error.prepareStackTrace;
+    const _pst = Error.prepareStackTrace;
     Error.prepareStackTrace = function (err, stack) {
       return stack;
     };
     try {
-      let err: any = new Error();
+      const err: any = new Error();
       let callerfile: string;
-      let currentfile: string;
 
-      currentfile = err.stack.shift().getFileName();
+      const currentfile: string = err.stack.shift().getFileName();
 
       while (err.stack.length) {
         callerfile = err.stack.shift().getFileName();
@@ -85,7 +85,9 @@ export function logWithLabel(label: Labels, message: string) {
           break;
         }
       }
-    } catch (err) {}
+    } catch (err) {
+      throw new Error(err as string);
+    }
     Error.prepareStackTrace = _pst;
 
     return filename;

@@ -1,12 +1,13 @@
+import { Client } from 'discord.js';
 import axios from 'axios';
 
 /* The `ApiTools` class in TypeScript provides methods for interacting with a web API to post, get, and
 retrieve applications with specific parameters and error handling. */
 export class ApiTools {
-  client: any;
+  client: Client;
   url: string;
 
-  constructor(url: string, client: any) {
+  constructor(url: string, client: Client) {
     this.url = url;
     this.client = client;
   }
@@ -33,14 +34,14 @@ export class ApiTools {
       if (params.some((param) => !param)) throw new Error('Missing parameters for postAppWeb method');
       if (!regex.test(iconURL)) throw new Error('Invalid URL provided for iconURL parameter');
 
-      const response = await axios({
-        url: `${this.url}/aplications/register/${this.client.user.id}`,
+      await axios({
+        url: `${this.url}/aplications/register/${this.client.user?.id}`,
         headers: {
           'Content-Type': 'application/json',
         },
         data: {
-          name: this.client.user.username,
-          id: this.client.user.id,
+          name: this.client.user?.username,
+          id: this.client.user?.id,
           description: description ? description : 'No description provided',
           licence: licence,
           avatarURL: iconURL,
@@ -57,7 +58,7 @@ export class ApiTools {
           throw new Error(err);
         });
     } catch (e) {
-      throw new Error(e as any);
+      throw new Error(e as string);
     }
   }
 
@@ -65,7 +66,7 @@ export class ApiTools {
     try {
       if (!id) throw new Error('Missing parameters for getAppWeb method');
 
-      const response = await axios({
+      await axios({
         url: `${this.url}/aplications/${id}`,
         headers: {
           'Content-Type': 'application/json',
@@ -78,13 +79,13 @@ export class ApiTools {
           throw new Error(err);
         });
     } catch (e) {
-      throw new Error(e as any);
+      throw new Error(e as string);
     }
   }
 
   public async getAppsWeb() {
     try {
-      const response = await axios({
+      await axios({
         url: `${this.url}/aplications`,
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +98,7 @@ export class ApiTools {
           throw new Error(err);
         });
     } catch (e) {
-      throw new Error(e as any);
+      throw new Error(e as string);
     }
   }
 }

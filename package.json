@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsup",
     "prepare": "husky install",
     "release": "standard-version",
     "release:first": "npm run release -- --first-release"
@@ -40,8 +40,6 @@
     "@types/express": "^4.17.21",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
-    "ava": "^6.1.2",
-    "chalk": "^4.0.0",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
@@ -50,9 +48,9 @@
   },
   "dependencies": {
     "axios": "^1.6.8",
+    "chalk": "^4.0.0",
     "discord.js": "^14.14.1",
     "express": "^4.19.2",
-    "glob": "^10.3.12",
-    "node-fetch": "^3.3.2"
+    "glob": "^10.3.12"
   }
 }

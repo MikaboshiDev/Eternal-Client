@@ -72,6 +72,9 @@ export function logWithLabel(label: Labels, message: string) {
       return stack;
     };
     try {
+      /* The code snippet you provided is a part of the `_getLogOrigin` function in your TypeScript file.
+This function is responsible for determining the origin or source file of the log message being
+processed. Here's a breakdown of what the code is doing: */
       const err: any = new Error();
       let callerfile: string;
 

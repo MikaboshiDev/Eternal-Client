@@ -1,11 +1,11 @@
 {
   "name": "eternal-support",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Support library for Eternal Client projects, has anime functions, control, logging and more utilities",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
   "scripts": {
-    "build": "tsup",
+    "build": "tsc",
     "prepare": "husky install",
     "release": "standard-version",
     "release:first": "npm run release -- --first-release"

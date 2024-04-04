@@ -1,6 +1,7 @@
 import apis from '../../config/apis.json';
 import axios from 'axios';
 
+/* This `anime` object contains three asynchronous functions related to anime data retrieval: */
 const anime = {
   animeRandom: async function () {
     const response = await axios.get(apis.endpoints.animes.random);
@@ -19,6 +20,7 @@ const anime = {
   },
 };
 
+/* The `manga` object contains three asynchronous functions related to manga data retrieval: */
 const manga = {
   mangaRandom: async function () {
     const response = await axios.get(apis.endpoints.manga.random);

@@ -15,15 +15,14 @@
 */
 
 /* ----- Functions ----- */
-export * from './src/functions/animelist';
 export * from './src/functions/akaneko';
-export * from './src/functions/console';
-export * from './src/tools/handlers';
-
+export * from './src/functions/animelist';
+export * from './src/tools/console';
 /* ----- Class Tools ----- */
-export { ApiTools } from './src/class/apiTools';
 export { NekoClient } from './src/class/nekoClient';
+export { ApiTools } from './src/class/apiTools';
+export { mcStatus } from './src/class/mcStatus';
 
 /* ----- Middlewares ----- */
-export { antiCrash } from './src/functions/anti.crash';
+export { antiCrash } from './src/tools/anti-crash';
 export { setupModelMiddleware } from './src/tools/mongo';

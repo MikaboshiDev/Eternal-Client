@@ -1,5 +1,3 @@
-import axios from "axios"
-
 /**
  * This TypeScript function uses axios to fetch an image URL from a specific API endpoint based on the
  * provided parameter.
@@ -10,8 +8,4 @@ import axios from "axios"
  * returned is the URL of an image fetched from the `https://akaneko.cuteasfubuki.xyz/api/` endpoint
  * based on the `params` provided to the function.
  */
-export async function resolve(params: string): Promise<string> {
-  const response = await axios.get(`https://akaneko.cuteasfubuki.xyz/api/${params}`);
-  if (response.status !== 200) throw new Error("Failed to fetch image");
-  return response.data.url;
-}
+export declare function resolve(params: string): Promise<string>;

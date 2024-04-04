@@ -12,6 +12,12 @@ export class ApiTools {
     this.client = client;
   }
 
+  /**
+   * The function `postAppWeb` is an asynchronous method in TypeScript that posts application web data
+   * with validation checks.
+   * @param  - The `postAppWeb` function is an asynchronous function that takes in the following
+   * parameters:
+   */
   public async postAppWeb({
     description,
     iconURL,
@@ -35,6 +41,7 @@ export class ApiTools {
       if (!regex.test(iconURL)) throw new Error('Invalid URL provided for iconURL parameter');
 
       await axios({
+        method: 'POST',
         url: `${this.url}/aplications/register/${this.client.user?.id}`,
         headers: {
           'Content-Type': 'application/json',
@@ -62,11 +69,19 @@ export class ApiTools {
     }
   }
 
+  /**
+   * This TypeScript function makes an asynchronous GET request to retrieve application data based on the
+   * provided ID.
+   * @param  - It looks like you have a TypeScript method `getAppWeb` that takes an object with a `id`
+   * property of type string as a parameter. The method makes a GET request using Axios to a specific URL
+   * endpoint based on the provided `id`. If successful, it returns the response data, otherwise
+   */
   public async getAppWeb({ id }: { id: string }) {
     try {
       if (!id) throw new Error('Missing parameters for getAppWeb method');
 
       await axios({
+        method: 'GET',
         url: `${this.url}/aplications/${id}`,
         headers: {
           'Content-Type': 'application/json',
@@ -83,9 +98,14 @@ export class ApiTools {
     }
   }
 
+  /**
+   * This TypeScript function makes an asynchronous GET request to retrieve applications data from a
+   * specified URL.
+   */
   public async getAppsWeb() {
     try {
       await axios({
+        method: 'GET',
         url: `${this.url}/aplications`,
         headers: {
           'Content-Type': 'application/json',

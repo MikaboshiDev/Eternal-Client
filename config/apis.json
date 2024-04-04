@@ -9,6 +9,9 @@
       "recommended": "https://api.jikan.moe/v4/recommendations/manga",
       "random": "https://api.jikan.moe/v4/random/manga",
       "search": "https://api.jikan.moe/v4/manga/"
+    },
+    "mc": {
+      "1": "https://api.mcstatus.io/v2/status"
     }
   }
 }

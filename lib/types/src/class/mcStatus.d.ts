@@ -3,5 +3,4 @@ export declare class mcStatus {
     ip: string;
     constructor(type: string, ip: string);
     getStatus(): Promise<any>;
-    getPlayers(): Promise<any>;
 }

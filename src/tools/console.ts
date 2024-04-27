@@ -55,14 +55,33 @@ const labelNames: Record<Labels, string> = {
 
 /**
  * The function `logWithLabel` logs a message with a specified label and sends it to a Discord webhook.
- * @param {Labels} label - The `label` parameter in the `logWithLabel` function is used to specify the
+ * @param {Labels | 'custom'} label - The `label` parameter in the `logWithLabel` function is used to specify the
  * type or category of the log message being logged. It is of type `Labels`, which likely is an enum or
  * a defined set of possible values representing different labels or categories for the log message.
  * @param {string} message - The `message` parameter in the `logWithLabel` function is a string that
  * represents the actual message or content that you want to log with a specific label. It could be any
  * information, warning, error, or status update that you want to display along with the label.
+ * @param {string} [customName] - The `customName` parameter allows specifying a custom label name.
+ * @param {string} [customColor] - The `customColor` parameter allows specifying a custom color for the label.
  */
-export function logWithLabel(label: Labels, message: string) {
+
+
+export function logWithLabel(label: Labels | 'custom', message: string, customName?: string) {
+  if (label === 'custom' && (customName === undefined)) {
+    console.error('Custom label requires both name and color parameters.');
+    return;
+  }
+
+  let labelName: string;
+  let labelColor: chalk.Chalk;
+
+  if (label === 'custom') {
+    labelName = customName!;
+    labelColor = chalk.hex('#efb810');
+  } else {
+    labelName = labelNames[label];
+    labelColor = labelColors[label];
+  }
   /* --- Log message to console --- */
   const _getLogOrigin = () => {
     let filename: any;
@@ -104,9 +123,6 @@ processed. Here's a breakdown of what the code is doing: */
    */
   const origin = _getLogOrigin().split(/[\\/]/).pop();
   const time = new Date().toLocaleTimeString();
-  const labelColor = labelColors[label];
-  const labelName = labelNames[label];
-
   console.log(
     labelColor(`${time}  ${labelName.padEnd(10, ' ')} | `) +
       chalk.grey(`${origin.length > 25 ? origin.substring(0, 17) + '...' : origin}`) +

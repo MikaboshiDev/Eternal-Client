@@ -1,11 +1,13 @@
 import { Client, codeBlock, EmbedBuilder, WebhookClient } from 'discord.js';
-import { inspect } from 'util';
+import winston, { format } from 'winston';
 import { logWithLabel } from './console';
+import { inspect } from 'util';
 
 function createField(name: string, value: unknown) {
   return { name, value: codeBlock('js', inspect(value, { depth: 0 }).slice(0, 300)) };
 }
 
+const date = `-${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`;
 function handleUncaughtException(event: string | null, err: unknown, origin: unknown) {
   const embed = new EmbedBuilder()
     .setAuthor({
@@ -19,11 +21,24 @@ function handleUncaughtException(event: string | null, err: unknown, origin: unk
 
   logWithLabel('error', `${origin}`);
   logWithLabel('error', `${err}`);
-
+  console.log(origin);
+  console.log(err);
   return embed;
 }
 
-export function antiCrash({ client, webhook }: { client: Client; webhook: WebhookClient }) {
+export function antiCrash({ client, webhook, path }: { client: Client; webhook: WebhookClient; path: string }) {
+  const logger = winston.createLogger({
+    level: 'info',
+    format: format.combine(
+      format.timestamp(),
+      format.printf((log) => `[${log.timestamp.split('T')[1].split('.')[0]} ${log.level}] ${log.message}`)
+    ),
+    defaultMeta: { service: 'user-service' },
+    transports: [new winston.transports.File({ filename: `${path}/log${date}.log` })],
+    rejectionHandlers: [new winston.transports.File({ filename: `${path}/log${date}.log` })],
+    exceptionHandlers: [new winston.transports.File({ filename: `${path}/log${date}.log` })],
+  });
+
   client.on('error', (err: Error) => {
     const embed = new EmbedBuilder()
       .setAuthor({
@@ -38,6 +53,8 @@ export function antiCrash({ client, webhook }: { client: Client; webhook: Webhoo
 
     webhook.send({ embeds: [embed] });
     logWithLabel('error', `${err}`);
+    logger.error(err);
+    console.log(err);
   });
 
   process.on('unhandledRejection', (reason: unknown, promise: Promise<unknown>) => {
@@ -54,14 +71,20 @@ export function antiCrash({ client, webhook }: { client: Client; webhook: Webhoo
 
     webhook.send({ embeds: [embed] });
     logWithLabel('error', `${reason}`);
+    logger.error(reason);
+    console.log(reason);
   });
 
   process.on('uncaughtException', (err: Error, origin) => {
     handleUncaughtException('Uncaught Exception/Catch', err, origin), logWithLabel('error', `${origin}`);
+    logger.error(origin);
+    console.log(origin);
   });
 
   process.on('uncaughtExceptionMonitor', (err: Error, origin) => {
     handleUncaughtException('Uncaught Exception Monitor', err, origin), logWithLabel('error', `${origin}`);
+    logger.error(origin);
+    console.log(origin);
   });
 
   process.on('warning', (warning: Error) => {
@@ -78,5 +101,7 @@ export function antiCrash({ client, webhook }: { client: Client; webhook: Webhoo
 
     webhook.send({ embeds: [embed] });
     logWithLabel('error', `${warning}`);
+    logger.warn(warning);
+    console.log(warning);
   });
 }

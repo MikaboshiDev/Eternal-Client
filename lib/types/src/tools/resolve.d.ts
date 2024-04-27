@@ -8,4 +8,4 @@
  * returned is the URL of an image fetched from the `https://akaneko.cuteasfubuki.xyz/api/` endpoint
  * based on the `params` provided to the function.
  */
-export declare function resolve(params: string): Promise<string>;
+export declare function resolve(params: string): Promise<any>;

@@ -15,12 +15,12 @@
 */
 
 /* ----- Functions ----- */
-export * from './src/functions/akaneko';
 export * from './src/functions/animelist';
+export * from './src/functions/akaneko';
 export * from './src/tools/console';
+
 /* ----- Class Tools ----- */
 export { NekoClient } from './src/class/nekoClient';
-export { ApiTools } from './src/class/apiTools';
 export { mcStatus } from './src/class/mcStatus';
 
 /* ----- Middlewares ----- */

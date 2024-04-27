@@ -19,15 +19,4 @@ export class mcStatus {
     if (res.status !== 200) return false;
     return res.data;
   }
-
-  async getPlayers() {
-    type McType = 'bedrock' | 'java';
-
-    if (!['bedrock', 'java'].includes(this.type as McType)) {
-      throw new Error('Invalid type of Minecraft server provided.');
-    }
-    const res = await axios.get(`${apis.endpoints.mc[1]}/${this.type}/${this.ip}/players`);
-    if (res.status !== 200) return false;
-    return res.data;
-  }
 }

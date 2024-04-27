@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios"
 
 /**
@@ -10,8 +11,8 @@ import axios from "axios"
  * returned is the URL of an image fetched from the `https://akaneko.cuteasfubuki.xyz/api/` endpoint
  * based on the `params` provided to the function.
  */
-export async function resolve(params: string): Promise<string> {
+export async function resolve(params: string): Promise<any> {
   const response = await axios.get(`https://akaneko.cuteasfubuki.xyz/api/${params}`);
-  if (response.status !== 200) throw new Error("Failed to fetch image");
+  if (!response || response.status !== 200) return;
   return response.data.url;
 }

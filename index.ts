@@ -21,6 +21,7 @@ export * from './src/tools/console';
 
 /* ----- Class Tools ----- */
 export { NekoClient } from './src/class/nekoClient';
+export { toolsHub } from "./src/class/toolsClass";
 export { mcStatus } from './src/class/mcStatus';
 
 /* ----- Middlewares ----- */

@@ -8,9 +8,15 @@ export class toolsHub {
   urlLicence: string;
   clientDC: Client;
   constructor(database: string, urlLicence: string, clientDC: Client) {
-    this.database = database;
     this.urlLicence = urlLicence;
+    this.database = database;
     this.clientDC = clientDC;
+    this.start();
+  }
+
+  private start() {
+    logWithLabel("custom", "ETERNAL", "Starting the toolsHub class monitoring system...");
+    this.DB();
   }
 
   private async DB() {

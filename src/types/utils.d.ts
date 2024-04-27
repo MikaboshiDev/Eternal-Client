@@ -15,3 +15,17 @@ declare namespace mcStatus {
       getStatus(): Promise<any | boolean>;
    }
 }
+
+declare namespace toolsHub {
+   export interface ToolsHub {
+      database: string;
+      urlLicence: string;
+      clientDC: Client;
+   }
+
+   export interface ToolsHub {
+      start(): void;
+      DB(): Promise<void>;
+      getLicence(API_KEY: string, version: string, product: string, licence: string): Promise<any | boolean>;
+   }
+}

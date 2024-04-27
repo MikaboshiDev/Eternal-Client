@@ -4,24 +4,26 @@ import { connect } from 'mongoose';
 import axios from 'axios';
 
 export class toolsHub {
-  database: string;
-  urlLicence: string;
-  clientDC: Client;
-  constructor(database: string, urlLicence: string, clientDC: Client) {
-    this.urlLicence = urlLicence;
-    this.database = database;
-    this.clientDC = clientDC;
+  databaseUrl: string;
+  licenceUrl: string;
+  apiUrl: string;
+  client: Client;
+  constructor(databaseUrl: string, licenceUrl: string, apiUrl: string, client: Client) {
+    this.databaseUrl = databaseUrl;
+    this.licenceUrl = licenceUrl;
+    this.apiUrl = apiUrl;
+    this.client = client;
     this.start();
   }
 
   private start() {
-    logWithLabel("custom", "ETERNAL", "Starting the toolsHub class monitoring system...");
+    logWithLabel('custom', 'Starting the toolsHub class monitoring system...', 'ETERNAL');
     this.DB();
   }
 
   private async DB() {
     try {
-      const connection = await connect(this.database);
+      const connection = await connect(this.databaseUrl);
       logWithLabel(
         'database',
         [
@@ -41,7 +43,7 @@ export class toolsHub {
     try {
       const res = await axios({
         method: 'POST',
-        url: this.urlLicence,
+        url: this.licenceUrl,
         data: {
           licence: licence,
           product: product,

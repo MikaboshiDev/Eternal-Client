@@ -7,12 +7,6 @@ type API = {
   recommended: string;
 };
 
-type APIClient = {
-  random: () => Promise<unknown>;
-  search: (id: number) => Promise<unknown>;
-  recommended: () => Promise<unknown>;
-};
-
 const request = async (url: string) => {
   try {
     const response = await axios.get(url);
@@ -24,7 +18,7 @@ const request = async (url: string) => {
   }
 };
 
-const createAPIClient = (endpoints: API): APIClient => {
+const createAPIClient = (endpoints: API) => {
   return {
     random: async () => {
       const response = await request(endpoints.random);

@@ -1,15 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare module 'eternal' {
   namespace EternalAnime {
-    export async function animeSearch(id: number): Promise<unknown>;
-    export async function animeRecommended(): Promise<unknown>;
-    export async function animeRandom(): Promise<unknown>;
+    export async function animeClient(): Promise<void>;
   }
 
   namespace EternalManga {
-    export function mangaSearch(id: number): Promise<unknown>;
-    export function mangaRecommended(): Promise<unknown>;
-    export function mangaRandom(): Promise<unknown>;
+    export function mangaClient(): Promise<void>;
   }
 
   namespace EternalBackend {

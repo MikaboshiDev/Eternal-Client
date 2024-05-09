@@ -26,9 +26,21 @@ const request = async (url: string) => {
 
 const createAPIClient = (endpoints: API): APIClient => {
   return {
-    random: async () => await request(endpoints.random),
-    search: async (id: number) => await request(`${endpoints.search}${id}/full`),
-    recommended: async () => await request(endpoints.recommended),
+    random: async () => {
+      const response = await request(endpoints.random);
+      if (!response) return false;
+      return response;
+    },
+    search: async (id: number) => {
+      const response = await request(`${endpoints.search}/${id}`);
+      if (!response) return false;
+      return response;
+    },
+    recommended: async () => {
+      const response = await request(endpoints.recommended);
+      if (!response) return false;
+      return response;
+    },
   };
 };
 

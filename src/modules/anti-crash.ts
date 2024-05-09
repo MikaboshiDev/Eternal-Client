@@ -26,7 +26,8 @@ function handleUncaughtException(event: string | null, err: unknown, origin: unk
   return embed;
 }
 
-export function antiCrash({ client, webhook, path }: { client: Client; webhook: WebhookClient; path: string }) {
+export function antiCrash({ client, webhookUrl, path }: { client: Client; webhookUrl: string; path: string }) {
+  const webhook = new WebhookClient({ url: webhookUrl });
   const logger = winston.createLogger({
     level: 'info',
     format: format.combine(

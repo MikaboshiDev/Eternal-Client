@@ -1,42 +1,53 @@
-import apis from '../../config/apis.json';
+import url from '../../config/json/apis.json';
 import axios from 'axios';
 
-/* This `anime` object contains three asynchronous functions related to anime data retrieval: */
-const anime = {
-  animeRandom: async function () {
-    const response = await axios.get(apis.endpoints.animes.random);
-    if (response.status !== 200) return false;
-    return response;
-  },
-  animeSearch: async function (id: number) {
-    const response = await axios.get(`${apis.endpoints.animes.search}${id}/full`);
-    if (response.status !== 200) return false;
-    return response;
-  },
-  animeRecommended: async function () {
-    const response = await axios.get(`${apis.endpoints.animes.recommended}`);
-    if (response.status !== 200) return false;
-    return response;
-  },
+type API = {
+  random: string;
+  search: string;
+  recommended: string;
 };
 
-/* The `manga` object contains three asynchronous functions related to manga data retrieval: */
-const manga = {
-  mangaRandom: async function () {
-    const response = await axios.get(apis.endpoints.manga.random);
-    if (response.status !== 200) return false;
-    return response;
-  },
-  mangaSearch: async function (id: number) {
-    const response = await axios.get(`${apis.endpoints.manga.search}${id}/full`);
-    if (response.status !== 200) return false;
-    return response;
-  },
-  mangaRecommended: async function () {
-    const response = await axios.get(`${apis.endpoints.manga.recommended}`);
-    if (response.status !== 200) return false;
-    return response;
-  },
+type APIClient = {
+  random: () => Promise<unknown>;
+  search: (id: number) => Promise<unknown>;
+  recommended: () => Promise<unknown>;
 };
 
-export { anime, manga };
+const request = async (url: string) => {
+  try {
+    const response = await axios.get(url);
+    if (response.status !== 200) return false;
+    return response;
+  } catch (error) {
+    console.error('Error occurred:', error);
+    return false;
+  }
+};
+
+const createAPIClient = (endpoints: API): APIClient => {
+  return {
+    random: async () => await request(endpoints.random),
+    search: async (id: number) => await request(`${endpoints.search}${id}/full`),
+    recommended: async () => await request(endpoints.recommended),
+  };
+};
+
+const animePath = url.endpoints.animes;
+const mangaPath = url.endpoints.manga;
+
+const animeEndpoints: API = {
+  random: animePath.random,
+  search: animePath.search,
+  recommended: animePath.recommended,
+};
+
+const mangaEndpoints: API = {
+  random: mangaPath.random,
+  search: mangaPath.search,
+  recommended: mangaPath.recommended,
+};
+
+const animeClient = createAPIClient(animeEndpoints);
+const mangaClient = createAPIClient(mangaEndpoints);
+
+export { animeClient, mangaClient };

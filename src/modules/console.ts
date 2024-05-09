@@ -14,7 +14,6 @@ type Labels =
   | 'database'
   | 'whatsapp'
   | 'discord'
-  | 'telegram'
   | 'maintenance';
 
 /* --- Define colors for log labels --- */
@@ -31,7 +30,6 @@ const labelColors: Record<Labels, chalk.Chalk> = {
   database: chalk.hex('#FF00FF'),
   whatsapp: chalk.hex('#25D366'),
   discord: chalk.hex('#80fe72'),
-  telegram: chalk.hex('#1DA1F2'),
   maintenance: chalk.hex('#FFA500'),
 };
 
@@ -49,7 +47,6 @@ const labelNames: Record<Labels, string> = {
   database: 'DATABASE',
   whatsapp: 'WHATSAPP',
   discord: 'DISCORD',
-  telegram: 'TELEGRAM',
   maintenance: 'MAINTENANCE',
 };
 
@@ -77,7 +74,7 @@ export function logWithLabel(label: Labels | 'custom', message: string, customNa
 
   if (label === 'custom') {
     labelName = customName!;
-    labelColor = chalk.hex('#efb810');
+    labelColor = chalk.hex('#5c143b');
   } else {
     labelName = labelNames[label];
     labelColor = labelColors[label];

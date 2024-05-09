@@ -1,5 +1,5 @@
 declare module 'akaneko' {
-  namespace sfw {
+  namespace AkanekoSfw {
     export function lewdBomb(total: number): Promise<string>;
     export function mobileWallpapers(): Promise<string>;
     export function wallpapers(): Promise<string>;
@@ -8,7 +8,7 @@ declare module 'akaneko' {
     export function neko(): Promise<string>;
   }
 
-  namespace nsfw {
+  namespace AkanekoNsfw {
 
     /* ----- Section #7 ----- */
     export function blowjob(): Promise<string>;

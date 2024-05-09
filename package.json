@@ -1,10 +1,11 @@
 {
   "name": "eternal-support",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Support library for Eternal Client projects, has anime functions, control, logging and more utilities",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
   "scripts": {
+    "test": "jest",
     "build": "tsc",
     "prepare": "husky install",
     "release": "standard-version",
@@ -34,11 +35,14 @@
   "homepage": "https://docs.night-support.xyz/paquetes/eternal-support",
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
+    "jest": "^29.7.0",
     "lint-staged": "^15.2.2",
+    "ts-jest": "^29.1.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.3"
   },
@@ -47,7 +51,36 @@
     "chalk": "^4.0.0",
     "discord.js": "^14.14.1",
     "express": "^4.19.2",
+    "glob": "^10.3.12",
     "mongoose": "^8.3.2",
     "winston": "^3.13.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/src/test/*.(unit|int|e2e|spec|test).(ts|js)"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/test/**"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/src/test/",
+      "/src/types/"
+    ],
+    "coverageDirectory": "./config/files/coverage",
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover"
+    ],
+    "displayName": {
+      "name": "Eternal Package Test",
+      "color": "blue"
+    }
   }
 }

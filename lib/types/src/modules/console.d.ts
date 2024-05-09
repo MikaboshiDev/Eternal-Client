@@ -1,4 +1,4 @@
-type Labels = 'error' | 'success' | 'api' | 'multihub' | 'website' | 'debug' | 'express' | 'bots' | 'info' | 'database' | 'whatsapp' | 'discord' | 'telegram' | 'maintenance';
+type Labels = 'error' | 'success' | 'api' | 'multihub' | 'website' | 'debug' | 'express' | 'bots' | 'info' | 'database' | 'whatsapp' | 'discord' | 'maintenance';
 /**
  * The function `logWithLabel` logs a message with a specified label and sends it to a Discord webhook.
  * @param {Labels | 'custom'} label - The `label` parameter in the `logWithLabel` function is used to specify the

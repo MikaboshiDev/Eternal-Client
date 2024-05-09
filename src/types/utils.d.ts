@@ -1,31 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Client } from "discord.js";
-declare module "utils" {
-   export function antiCrash({ client, webhook, path }: { client: Client; webhook: WebhookClient; path: string }): void;
-   export function logWithLabel(label: Labels, message: string): void;
+import { Client } from 'discord.js';
+declare module 'utils' {
+  export function logWithLabel(label: Labels, message: string): void;
 }
 
-declare namespace mcStatus {
-   export interface McStatus {
-      type: string;
-      ip: string;
-   }
+declare namespace ToolsHub {
+  export interface ToolsHub {
+    database: string;
+    weebhook: string;
+    clientDC: Client;
+    path: string;
+  }
 
-   export interface McStatus {
-      getStatus(): Promise<any | boolean>;
-   }
-}
-
-declare namespace toolsHub {
-   export interface ToolsHub {
-      database: string;
-      urlLicence: string;
-      clientDC: Client;
-   }
-
-   export interface ToolsHub {
-      start(): void;
-      DB(): Promise<void>;
-      getLicence(API_KEY: string, version: string, product: string, licence: string): Promise<any | boolean>;
-   }
+  export interface ToolsHub {
+    licences(body: Data): Promise<boolean>;
+    mongodb(): Promise<void>;
+    start(): Promise<void>;
+  }
 }

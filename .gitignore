@@ -2,3 +2,5 @@ node_modules
 .husky
 *.js.map
 lib/types/test
+files
+test

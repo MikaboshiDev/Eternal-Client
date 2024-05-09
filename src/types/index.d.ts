@@ -1,5 +1,5 @@
 /* ----- Anime ----- */
-export * from './animelist';
+export * from './eternal';
 export * from './akaneko';
 export * from './nekos';
 

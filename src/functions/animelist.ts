@@ -7,32 +7,22 @@ type API = {
   recommended: string;
 };
 
-const request = async (url: string) => {
-  try {
-    const response = await axios.get(url);
-    if (response.status !== 200) return false;
-    return response;
-  } catch (error) {
-    console.error('Error occurred:', error);
-    return false;
-  }
-};
 
 const createAPIClient = (endpoints: API) => {
   return {
     random: async () => {
-      const response = await request(endpoints.random);
-      if (!response) return false;
+      const response = await axios.get(endpoints.random);
+      if (response.status !== 200) return false;
       return response;
     },
     search: async (id: number) => {
-      const response = await request(`${endpoints.search}/${id}`);
-      if (!response) return false;
+      const response = await axios.get(`${endpoints.search}${id}/full`);
+      if (response.status !== 200) return false;
       return response;
     },
     recommended: async () => {
-      const response = await request(endpoints.recommended);
-      if (!response) return false;
+      const response = await axios.get(endpoints.recommended);
+      if (response.status !== 200) return false;
       return response;
     },
   };

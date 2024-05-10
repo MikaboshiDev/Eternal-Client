@@ -1,11 +1,11 @@
-declare const sfw: {
+declare const AkanekoSfw: {
     neko: () => Promise<string>;
     wallpapers: () => Promise<string>;
     mobileWallpapers: () => Promise<string>;
     foxgirl: () => Promise<string>;
     lewdNeko: () => Promise<string>;
 };
-declare const nsfw: {
+declare const AkanekoNsfw: {
     ass: () => Promise<string>;
     bdsm: () => Promise<string>;
     cum: () => Promise<string>;
@@ -40,4 +40,4 @@ declare const nsfw: {
     succubus: () => Promise<string>;
     yaoi: () => Promise<string>;
 };
-export { nsfw, sfw };
+export { AkanekoNsfw, AkanekoSfw };

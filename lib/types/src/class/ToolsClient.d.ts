@@ -1,14 +1,5 @@
-import { Client } from 'discord.js';
-type Product = {
-    name: string;
-    version: string;
-};
-type Data = {
-    licence: string;
-    api: string;
-    key: string;
-    product: Product;
-};
+import { Client } from "discord.js";
+import { Data } from "../types/tools/TypesTools";
 export declare class ToolsHub {
     private database;
     private weebhook;
@@ -20,7 +11,7 @@ export declare class ToolsHub {
      * The function `mongodb` connects to a MongoDB database asynchronously and throws an error if there is
      * a connection issue.
      */
-    private mongodb;
+    private MongoConnect;
     /**
      * The function sends a POST request to a specified API endpoint with license and product information,
      * and returns the response data if successful.
@@ -30,6 +21,5 @@ export declare class ToolsHub {
      * a `status_code` property that is not equal to 200, the function will return `false`. Otherwise, it
      * will return the `res.data` object.
      */
-    licences(body: Data): Promise<any>;
+    LicenceUtil(body: Data): Promise<any>;
 }
-export {};

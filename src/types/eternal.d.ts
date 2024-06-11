@@ -5,7 +5,6 @@ declare module 'eternal' {
   export async function animeClient(): Promise<void>;
   export function mangaClient(): Promise<void>;
   namespace EternalBackend {
-    export function morganMiddleware(res: Response, req: Request, next: NextFunction): void;
     export function handleServerError(res: Response, error: Error | any): void;
   }
 
@@ -31,5 +30,17 @@ declare namespace ToolsHub {
     licences(body: Data): Promise<boolean>;
     mongodb(): Promise<void>;
     start(): Promise<void>;
+  }
+}
+
+declare namespace DiscordLogger {
+  export interface DiscordLogger {
+    events: Array<keyof typeof Events>;
+    client: Client;
+    channel: string;
+  }
+
+  export interface DiscordLogger {
+    init(): void;
   }
 }

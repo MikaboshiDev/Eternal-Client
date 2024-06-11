@@ -1,7 +1,8 @@
-import { Client, codeBlock, EmbedBuilder, WebhookClient } from 'discord.js';
-import winston, { format } from 'winston';
-import { logWithLabel } from './console';
-import { inspect } from 'util';
+import { Client, codeBlock, EmbedBuilder, WebhookClient } from "discord.js";
+import { inspect } from "util";
+import winston, { format } from "winston";
+
+import { logWithLabel } from "./LoggerUtils";
 
 function createField(name: string, value: unknown) {
   return { name, value: codeBlock('js', inspect(value, { depth: 0 }).slice(0, 300)) };
@@ -26,10 +27,18 @@ function handleUncaughtException(event: string | null, err: unknown, origin: unk
   return embed;
 }
 
-export function antiCrash({ client, webhookUrl, path }: { client: Client; webhookUrl: string; path: string }) {
+export function CrashUtils({ client, webhookUrl, path }: { client: Client; webhookUrl: string; path: string }) {
   const webhook = new WebhookClient({ url: webhookUrl });
   const logger = winston.createLogger({
-    level: 'info',
+    levels: {
+      error: 0,
+      warn: 1,
+      info: 2,
+      http: 3,
+      verbose: 4,
+      debug: 5,
+      silly: 6,
+    },
     format: format.combine(
       format.timestamp(),
       format.printf((log) => `[${log.timestamp.split('T')[1].split('.')[0]} ${log.level}] ${log.message}`)
@@ -73,19 +82,16 @@ export function antiCrash({ client, webhookUrl, path }: { client: Client; webhoo
     webhook.send({ embeds: [embed] });
     logWithLabel('error', `${reason}`);
     logger.error(reason);
-    console.log(reason);
   });
 
   process.on('uncaughtException', (err: Error, origin) => {
     handleUncaughtException('Uncaught Exception/Catch', err, origin), logWithLabel('error', `${origin}`);
     logger.error(origin);
-    console.log(origin);
   });
 
   process.on('uncaughtExceptionMonitor', (err: Error, origin) => {
     handleUncaughtException('Uncaught Exception Monitor', err, origin), logWithLabel('error', `${origin}`);
     logger.error(origin);
-    console.log(origin);
   });
 
   process.on('warning', (warning: Error) => {
@@ -102,7 +108,5 @@ export function antiCrash({ client, webhookUrl, path }: { client: Client; webhoo
 
     webhook.send({ embeds: [embed] });
     logWithLabel('error', `${warning}`);
-    logger.warn(warning);
-    console.log(warning);
   });
 }

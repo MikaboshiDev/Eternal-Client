@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import chalk from 'chalk';
+import chalk from "chalk";
 
 type Labels =
   | 'error'
@@ -13,6 +13,7 @@ type Labels =
   | 'info'
   | 'database'
   | 'whatsapp'
+  | "shards"
   | 'discord'
   | 'maintenance';
 
@@ -31,23 +32,25 @@ const labelColors: Record<Labels, chalk.Chalk> = {
   whatsapp: chalk.hex('#25D366'),
   discord: chalk.hex('#80fe72'),
   maintenance: chalk.hex('#FFA500'),
+  shards: chalk.hex('#FFA500'),
 };
 
 /* --- Define labels for log messages --- */
 const labelNames: Record<Labels, string> = {
-  error: 'ERROR',
-  success: 'SUCCESS',
-  debug: 'DEBUG',
-  express: 'EXPRESS',
-  bots: 'BOTS',
-  api: 'API',
-  multihub: 'MULTIHUB',
-  website: 'WEBSITE',
-  info: 'INFO',
-  database: 'DATABASE',
-  whatsapp: 'WHATSAPP',
-  discord: 'DISCORD',
-  maintenance: 'MAINTENANCE',
+  error: 'Error',
+  success: 'Success',
+  debug: 'Debug',
+  express: 'Express',
+  bots: 'Bots',
+  api: 'Api',
+  multihub: 'MultiHub',
+  website: 'Website',
+  info: 'Info',
+  database: 'Database',
+  whatsapp: 'WhatsApp',
+  discord: 'Discord',
+  maintenance: 'Maintenance',
+  shards: 'Shards',
 };
 
 /**
@@ -62,11 +65,9 @@ const labelNames: Record<Labels, string> = {
  * @param {string} [customColor] - The `customColor` parameter allows specifying a custom color for the label.
  */
 
-
 export function logWithLabel(label: Labels | 'custom', message: string, customName?: string) {
-  if (label === 'custom' && (customName === undefined)) {
-    console.error('Custom label requires both name and color parameters.');
-    return;
+  if (label === 'custom' && customName === undefined) {
+    throw new Error('Custom label name must be provided when using the custom label type.');
   }
 
   let labelName: string;
@@ -121,9 +122,11 @@ processed. Here's a breakdown of what the code is doing: */
   const origin = _getLogOrigin().split(/[\\/]/).pop();
   const time = new Date().toLocaleTimeString();
   console.log(
-    labelColor(`${time}  ${labelName.padEnd(10, ' ')} | `) +
-      chalk.grey(`${origin.length > 25 ? origin.substring(0, 17) + '...' : origin}`) +
-      ' '.repeat(25 - (origin.length > 25 ? 25 : origin.length)) +
-      ` | ${message}`
+    labelColor(`${labelName.padEnd(10, ' ')} -> `) +
+      chalk.hex('#ffffbf')('💻 Assistent Bookshop ~ ') +
+      chalk.grey(`${origin.length > 15 ? origin.substring(0, 17) + '...' : origin}`) +
+      ' '.repeat(25 - (origin.length > 15 ? 15 : origin.length)) +
+      `${chalk.hex('#386ce9')(`[${time}]`)}` +
+      `\n  ➜  ${message}`
   );
 }

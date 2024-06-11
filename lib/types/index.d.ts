@@ -1,8 +1,9 @@
-export * from "./src/functions/aplications";
-export * from './src/functions/animelist';
-export * from './src/functions/backend';
-export * from './src/libraries/akaneko';
-export * from './src/modules/console';
-export { NekoClient } from './src/class/neko-client';
-export { ToolsHub } from './src/class/tools-class';
-export { setupModelMiddleware } from './src/modules/mongo';
+export * from './src/libraries/AkanekoLib';
+export * from './src/functions/FuncAnime';
+export * from './src/functions/FuncApps';
+export * from './src/modules/CrashUtils';
+export * from './src/functions/FuncApi';
+export { DiscordLogger } from './src/class/DiscordLogger';
+export { NekoClient } from './src/class/NekoClient';
+export { ToolsHub } from './src/class/ToolsClient';
+export { setupModelMiddleware } from './src/modules/MongoUtils';

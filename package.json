@@ -1,6 +1,6 @@
 {
   "name": "eternal-support",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Support library for Eternal Client projects, has anime functions, control, logging and more utilities",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
@@ -34,6 +34,7 @@
   },
   "homepage": "https://docs.night-support.xyz/paquetes/eternal-support",
   "devDependencies": {
+    "@types/common-tags": "^1.8.4",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
@@ -47,40 +48,14 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
+    "ascii-table": "^0.0.9",
     "axios": "^1.6.8",
     "chalk": "^4.0.0",
+    "common-tags": "^1.8.2",
     "discord.js": "^14.14.1",
     "express": "^4.19.2",
     "glob": "^10.3.12",
     "mongoose": "^8.3.2",
     "winston": "^3.13.0"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "testMatch": [
-      "**/src/test/*.(unit|int|e2e|spec|test).(ts|js)"
-    ],
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.ts",
-      "!src/test/**"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/src/test/",
-      "/src/types/"
-    ],
-    "coverageDirectory": "./config/files/coverage",
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "text",
-      "clover"
-    ],
-    "displayName": {
-      "name": "Eternal Package Test",
-      "color": "blue"
-    }
   }
 }

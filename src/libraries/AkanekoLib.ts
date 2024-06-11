@@ -1,4 +1,4 @@
-import { resolve } from '../modules/resolve';
+import { resolve } from "../modules/ResolveUtils";
 
 /* The `const sfw` object is defining various functions, each of which returns a Promise that resolves
 to a string. These functions are used to fetch different types of safe-for-work (sfw) content by

@@ -1,6 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { logWithLabel } from './console';
 import EventEmitter from 'events';
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { logWithLabel } from './LoggerUtils';
 
 /* The class `DatabaseEventEmitter` extends the `EventEmitter` class in TypeScript. */
 class DatabaseEventEmitter extends EventEmitter {}

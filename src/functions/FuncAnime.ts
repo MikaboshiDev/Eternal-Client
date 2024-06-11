@@ -1,12 +1,7 @@
-import url from '../../config/json/apis.json';
-import axios from 'axios';
+import axios from "axios";
 
-type API = {
-  random: string;
-  search: string;
-  recommended: string;
-};
-
+import url from "../../config/json/apis.json";
+import { API } from "../types/tools/TypesTools";
 
 const createAPIClient = (endpoints: API) => {
   return {

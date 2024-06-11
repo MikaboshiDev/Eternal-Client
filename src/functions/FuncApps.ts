@@ -1,6 +1,7 @@
-import { logWithLabel } from '../modules/console';
-import path from 'node:path';
 import { glob } from 'glob';
+import path from 'node:path';
+
+import { logWithLabel } from '../modules/LoggerUtils';
 
 function levenshteinDistance(a: string, b: string): number {
   if (!a.length) return b.length;

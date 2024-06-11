@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import endpoints from '../../config/json/endpoints.json';
-import { getContent } from '../libraries/nekos';
+import endpoints from "../../config/json/endpoints.json";
+import { getContent } from "../libraries/NekosLib";
 
 /* The NekoClient class is designed to dynamically create methods for accessing various endpoints from
 the nekos.life API. */

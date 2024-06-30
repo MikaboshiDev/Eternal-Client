@@ -1,7 +1,6 @@
 import axios from "axios";
-import chalk from "chalk";
 import { Client } from "discord.js";
-import mongoose, { connect } from "mongoose";
+import { connect } from "mongoose";
 import { performance } from "node:perf_hooks";
 
 import { CrashUtils } from "../modules/CrashUtils";
@@ -34,19 +33,6 @@ export class ToolsHub {
     try {
       const startTime = performance.now();
       await connect(this.database);
-      const db = mongoose.connection;
-      db.on('error', console.error.bind(console, 'connection error:'));
-      db.once('open', function () {
-        logWithLabel(
-          'database',
-          [
-            `${chalk.cyanBright('Database')} ${chalk.grey('connected')} ${chalk.grey(`${db.host}:${db.port}`)}`,
-            `  ➜  ${chalk.green('Database name')}: ${db.name}`,
-            `  ➜  ${chalk.green('Database state')}: 'connected'`,
-          ].join('\n')
-        );
-      });
-
       const endTime = performance.now();
       logWithLabel('custom', `Database connection took ${endTime - startTime}ms.`, 'Eternal');
     } catch (error) {

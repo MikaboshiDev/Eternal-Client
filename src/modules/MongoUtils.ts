@@ -1,7 +1,7 @@
-import EventEmitter from 'events';
+import EventEmitter from "events";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { logWithLabel } from './LoggerUtils';
+import { logWithLabel } from "./LoggerUtils";
 
 /* The class `DatabaseEventEmitter` extends the `EventEmitter` class in TypeScript. */
 class DatabaseEventEmitter extends EventEmitter {}
@@ -15,7 +15,7 @@ const dbEventEmitter = new DatabaseEventEmitter();
  * `modelName`. The function sets up event listeners for changes, schema creation, and schema deletion
  * on this model
  */
-export function setupModelMiddleware(model: any) {
+export function ModelMiddleware(model: any) {
   model.watch().on('change', (change: any) => {
     logWithLabel('database', `The model ${model.modelName} has been updated with the following change`);
     dbEventEmitter.emit('update', model.modelName, change);

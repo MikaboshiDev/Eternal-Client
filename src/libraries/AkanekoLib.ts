@@ -4,7 +4,7 @@ import { resolve } from "../modules/ResolveUtils";
 to a string. These functions are used to fetch different types of safe-for-work (sfw) content by
 calling the `resolve` function with specific parameters. Here's a breakdown of what each function
 does: */
-const AkanekoSfw = {
+const Sfw = {
   neko: function (): Promise<string> {
     return resolve('neko');
   },
@@ -25,7 +25,7 @@ const AkanekoSfw = {
 /* This code snippet defines an object named `nsfw` which contains various functions, each returning a
 Promise that resolves to a string. These functions are used to fetch different types of content by
 calling the `resolve` function with specific parameters. */
-const AkanekoNsfw = {
+const Nsfw = {
   ass: function (): Promise<string> {
     return resolve('ass');
   },
@@ -127,4 +127,4 @@ const AkanekoNsfw = {
   },
 };
 
-export { AkanekoNsfw, AkanekoSfw };
+export { Nsfw, Sfw };

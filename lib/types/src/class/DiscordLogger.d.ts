@@ -1,5 +1,5 @@
 import { Client, Events } from "discord.js";
-export declare class DiscordLogger {
+export declare class Logger {
     private events;
     private channel;
     private client;

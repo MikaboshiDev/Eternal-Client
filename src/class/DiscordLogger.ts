@@ -8,7 +8,7 @@ import {
 import emojis from "../../config/json/emojis.json";
 import { logWithLabel } from "../modules/LoggerUtils";
 
-export class DiscordLogger {
+export class Logger {
   private events: Array<keyof typeof Events>;
   private channel: string;
   private client: Client;

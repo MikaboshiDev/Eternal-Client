@@ -6,4 +6,4 @@
  * `modelName`. The function sets up event listeners for changes, schema creation, and schema deletion
  * on this model
  */
-export declare function setupModelMiddleware(model: any): void;
+export declare function ModelMiddleware(model: any): void;

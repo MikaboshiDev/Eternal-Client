@@ -1,12 +1,9 @@
----
-description: >-
-  Librería de NPM enfocada en el soporte de múltiples funciones y control de
-  peticiones a una api privada del servidor
----
-
 # Eternal Support
 
 `Eternal-Support` es una biblioteca de soporte, que agrega funciones y solicitudes útiles a bibliotecas como nekos.life y akaneko, su objetivo es la optimización de los recursos de trabajo.
+
+> [!WARNING]
+Se actualizao gran cantidad de nombres de las funciones y las clases que contiene esta libreria debido a un error de sintaxis encontrado al momento de hacer peticiones HTTP, por lo que se recomienda actualizar a la version 1.0.8
 
 ## Contenido
 
@@ -22,10 +19,10 @@ Te listare las funciones de la librería según la versión en la que la misma s
 
 Estas funciones son dedicadas para la búsqueda de anime en [Animelist](https://myanimelist.net/) por medio de un cliente externo para el consumo de su Api de forma mas rápida,
 
-```typescript
-import { animeClient, mangaClient } from 'eternal-support';
+```ts
+import { Anime, Manga } from 'eternal-support';
 async function request() {
-  console.log(await animeClient.animeSearch(1246));
+  console.log(await Anime.animeSearch(1246));
 }
 
 request();
@@ -41,10 +38,10 @@ request();
 
 Como abras notado son las mismas funciones del [Anime](eternal-support.md#anime) sin embargo orientadas a la búsqueda de manga de la misma plataforma
 
-```typescript
-import { animeClient, mangaClient } from 'eternal-support';
+```ts
+import { Anime, Manga } from 'eternal-support';
 async function request() {
-  console.log(await mangaClient.mangaSearch(1246));
+  console.log(await Manga.mangaSearch(1246));
 }
 
 request();
@@ -94,9 +91,8 @@ Todos los puntos finales excepto los marcados con texto, excepto `Chat/8Ball/Fac
 
 `eternal.eightBall` devolverá JSON `{response: <cadena de respuesta de 8Ball>, url: <URL a una imagen de 8Ball coincidente>}`
 
-{% hint style="warning" %}
-Estas peticiones se obtuvieron basándose en librerías como [nekos.life](https://www.npmjs.com/package/nekos.life) y [nekosapis](https://docs.nekos.best/) de NPM, no son de propia creación de nosotros&#x20;
-{% endhint %}
+> [!WARNING]
+> Estas peticiones se obtuvieron basándose en librerías como [nekos.life](https://www.npmjs.com/package/nekos.life) y [nekosapis](https://docs.nekos.best/) de NPM, no son de propia creación de nosotros&#x20;
 
 ```typescript
 import { NekoClient } from 'eternal-support';
@@ -121,11 +117,10 @@ async function request() {
 
 #### Nsfw
 
-{% hint style="danger" %}
-Estas funciones se obtuvieron basándonos en la librería de [akaneko](https://www.npmjs.com/package/akaneko) por lo que si deseas conocerlas, visita su documentación
-{% endhint %}
+> [!NOTE]
+> Estas funciones se obtuvieron basándonos en la librería de [akaneko](https://www.npmjs.com/package/akaneko) por lo que si deseas conocerlas, visita su documentación
 
-```javascript
+```ts
 //import { nsfw } from "eternal-support"
 const akaneko = require('akaneko');
 
@@ -156,11 +151,10 @@ akaneko.nsfw.maid().then((imageURL) => {
 
 ### Neko
 
-{% hint style="info" %}
-Clase optimizada de la librería de Neko.life para la optencion de imagenes de anime por medio de peticiones https
-{% endhint %}
+> [!NOTE]
+> Clase optimizada de la librería de Neko.life para la optencion de imagenes de anime por medio de peticiones https
 
-```typescript
+```ts
 import { NekoClient } from 'eternal-support';
 const neko = new NekoClient();
 
@@ -172,7 +166,7 @@ async function work() {
 work();
 ```
 
-```typescript
+```ts
 import { NekoClient } from 'eternal-support';
 const neko = new NekoClient();
 
@@ -183,11 +177,10 @@ neko.catText().then((catText) => console.log(catText));
 
 Función de soporte ante errores del cliente y de la aplicación de discord, envía los errores y el motivo a un canal dentro del mismo servidor
 
-{% hint style="danger" %}
-Ahora integrada por default dentro de la clase [`Tools`](eternal-support.md#tools-hub)
-{% endhint %}
+> [!WARNING]
+> Ahora integrada por default dentro de la clase [`Tools`](eternal-support.md#tools-hub)
 
-### Tools Hub
+### Tools
 
 > Funcion Privada de Eternal IA, nose garantiza funcionamiento fuera de ellos
 
@@ -199,33 +192,37 @@ Clase con funciones de Mongoose y licencias personales, esto se agrego con el fi
 
 ```typescript
 import { discordApp } from '../../apps/discord/app';
-import { toolsHub } from 'eternal-support';
 import { config } from './configuration';
+import { Tools } from 'eternal-support';
 
-const webhook = 'Url de un webhook de discord';
+const webhook = 'URL'; //URL de tu webhook
 const databaseUrl = config.database;
-const tools = new ToolsHub(database, webhook, './files/logs', discordApp);
+const tools = new Tools(database, webhook, './files/logs', discordApp);
 ```
 
 ## Ejemplos
 
 ```typescript
-import { AkanekoNsfw, AkanekoStw } from 'eternal-support';
+import { Nsfw, Stw } from 'eternal-support';
 async function request() {
-  console.log(await AkanekoNsfw.doujin());
+  console.log(await Nsfw.doujin());
 }
 
 request();
 ```
 
+Estas funciones `Anime, Manga` lo que hacen es buscar dentro de la api de [Animelist](https://myanimelist.net/) un anime o manga en especifico, por medio de la id que el mismo sitio proporciona, en este caso la id es `1246` y la función `search` se encarga de buscarlo.
+
 ```typescript
-import { animeClient, mangaClient } from 'eternal-support';
+import { Anime, Manga } from 'eternal-support';
 async function request() {
   console.log(await mangaClient.search(1246));
 }
 
 request();
 ```
+
+`logWithLabel` es una función que se encarga de loguear en consola con un label personalizado, en este caso el label es `info` y el mensaje es `Hello World`.
 
 ```typescript
 import { logWithLabel } from 'eternal-support';
@@ -245,10 +242,75 @@ async function getMobileWallpapers() {
 getMobileWallpapers();
 ```
 
+`getGithubData` acomoda y optimiza la busqueda de perfiles de github por medio de peticiones http, incluye informacion de los seguidores y repositorios publicos del usuario
+
+```ts
+//Nueva version 1.0.8 GithubData
+import { getGithubData } from 'eternal-support';
+async function GithubUser(username: string) {
+  const res = await getGithubData(username);
+  return res;
+}
+
+GithubUser();
+```
+
+regreso de la funcion `getGithubData`:
+
+```json
+{
+  username: 'MikaboshiDev',
+  id: number,
+  public_repos: 17,
+  url: 'https://github.com/MikaboshiDev',
+  profile: {
+    avatar: 'https://avatars.githubusercontent.com/u/111389391?v=4',
+    bio: 'Discord bot creator, electromechanical designer and student of various areas of innovation. Horus - Apophis - Gula',
+    company: 'Eternal IA',
+    created_at: '2022-08-16T19:47:52Z',
+    updated_at: '2024-07-16T12:28:20Z'
+  },
+  account: {
+    type: 'User',
+    email: null,
+    location: null,
+    blog: 'https://docs.night-support.xyz/',
+    twitter: null,
+    followers: 16,
+    following: 1
+  },
+  followers: {
+    url: 'https://api.github.com/users/MikaboshiDev/followers',
+    data: { count: 16, followers: [Array] }
+  },
+  repositories: {
+    url: 'https://api.github.com/users/MikaboshiDev/repos',
+    data: { count: 17, repository: [Array] }
+  }
+}
+```
+
 Discord Logger
 
+con el fin de no tener que crear mil archivos diferentes de los eventos de discord, `Logger` se encarga de loguear los eventos de discord en un canal especifico, en este caso el canal es `Id channel server discord` y los eventos a loguear son:
+
+- AutoModerationActionExecution
+- MessageUpdate
+- AutoModerationRuleCreate
+- GuildMemberRemove
+- GuildMemberAdd
+- ChannelDelete
+- ChannelCreate
+- GuildEmojiCreate
+- GuildRoleCreate
+- GuildRoleDelete
+- GuildRoleUpdate
+- InviteCreate
+- InviteDelete
+- MessageDelete
+
 ```typescript
-const logger = new DiscordLogger(
+const logger = new Logger(
   'Id channel server discord',
   [
     'AutoModerationActionExecution',
@@ -267,3 +329,11 @@ const logger = new DiscordLogger(
   client
 );
 ```
+
+## Contribuciones
+
+Si deseas contribuir a la librería, puedes hacerlo por medio de un `Pull Request` o `Issue` en el repositorio, si deseas hacer una sugerencia o reportar un error, puedes hacerlo por medio de un `Issue` en el repositorio.
+
+> [!NOTE]
+Toda contribucion es bienvenida, esperamos que la libreria sea de tu agrado y te sea de utilidad en tus proyectos
+puedes ingresar al [DISCORD](https://discord.gg/QjnHV2f2) de la comunidad para mas informacion

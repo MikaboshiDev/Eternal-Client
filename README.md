@@ -3,7 +3,7 @@
 `Eternal-Support` es una biblioteca de soporte, que agrega funciones y solicitudes útiles a bibliotecas como nekos.life y akaneko, su objetivo es la optimización de los recursos de trabajo.
 
 > [!WARNING]
-Se actualizao gran cantidad de nombres de las funciones y las clases que contiene esta libreria debido a un error de sintaxis encontrado al momento de hacer peticiones HTTP, por lo que se recomienda actualizar a la version 1.0.8
+Se actualizo gran cantidad de nombres de las funciones y las clases que contiene esta libreria debido a un error de sintaxis encontrado al momento de hacer peticiones HTTP, por lo que se recomienda actualizar a la version 1.0.8
 
 ## Contenido
 
@@ -253,41 +253,6 @@ async function GithubUser(username: string) {
 }
 
 GithubUser();
-```
-
-regreso de la funcion `getGithubData`:
-
-```json
-{
-  username: 'MikaboshiDev',
-  id: number,
-  public_repos: 17,
-  url: 'https://github.com/MikaboshiDev',
-  profile: {
-    avatar: 'https://avatars.githubusercontent.com/u/111389391?v=4',
-    bio: 'Discord bot creator, electromechanical designer and student of various areas of innovation. Horus - Apophis - Gula',
-    company: 'Eternal IA',
-    created_at: '2022-08-16T19:47:52Z',
-    updated_at: '2024-07-16T12:28:20Z'
-  },
-  account: {
-    type: 'User',
-    email: null,
-    location: null,
-    blog: 'https://docs.night-support.xyz/',
-    twitter: null,
-    followers: 16,
-    following: 1
-  },
-  followers: {
-    url: 'https://api.github.com/users/MikaboshiDev/followers',
-    data: { count: 16, followers: [Array] }
-  },
-  repositories: {
-    url: 'https://api.github.com/users/MikaboshiDev/repos',
-    data: { count: 17, repository: [Array] }
-  }
-}
 ```
 
 Discord Logger
